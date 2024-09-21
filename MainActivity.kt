@@ -1,6 +1,7 @@
 package com.example.mask
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -22,7 +23,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mask.lib.MaskCpf
 import com.example.mask.lib.MaskPhone
@@ -59,7 +59,10 @@ fun MaskPhoneCPFScreen(modifier: Modifier = Modifier) {
         TextField(
             value = textPhone.value,
             onValueChange = { newValue ->
-                textPhone.value = newValue
+                if (newValue.length<=11){
+                   textPhone.value = newValue
+                }
+
             },
             placeholder = { Text(text = "Digite o Telefone") },
             shape = RoundedCornerShape(8.dp),
@@ -81,7 +84,10 @@ fun MaskPhoneCPFScreen(modifier: Modifier = Modifier) {
         TextField(
             value = textCpf.value,
             onValueChange = { newValue ->
-                textCpf.value = newValue
+                if (newValue.length<=11){
+                    textCpf.value = newValue
+                }
+
             },
             placeholder = { Text(text = "Digite o CPF") },
             shape = RoundedCornerShape(8.dp),

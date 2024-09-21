@@ -3,6 +3,7 @@
 <br />
 <h1>Como usar?</h1>
 
+
 ```kotlin
     val visualTransformationPhone: VisualTransformation = remember { MaskPhone() }
     val visualTransformationCpf: VisualTransformation = remember { MaskCpf() }
@@ -24,3 +25,13 @@
     val transformedPhone =
             visualTransformationPhone.filter(AnnotatedString(textPhone.value)).text.text
   ```
+
+  <h1>Não esquecer de colocar length no TextField na parte de onValueChange:</h1>
+   ```kotlin
+   onValueChange = { newValue ->
+                if (newValue.length<=11){
+                   textPhone.value = newValue
+                }
+
+            },
+     ```
