@@ -27,12 +27,12 @@
   ```
 
   <h1>Não esquecer de colocar length no TextField na parte de onValueChange:</h1>
-  
-   ```kotlin
+
+```kotlin
    onValueChange = { newValue ->
                 if (newValue.length<=11){
                    textPhone.value = newValue
                 }
 
             },
-     ```
+```
