@@ -14,3 +14,13 @@
  visualTransformation = visualTransformationPhone,
  visualTransformation = visualTransformationCpf
   ```
+
+  <h1>Para recuperar os valores você usa:</h1>
+
+   
+ ```kotlin
+    val transformedCpf =
+            visualTransformationCpf.filter(AnnotatedString(textCpf.value)).text.text
+    val transformedPhone =
+            visualTransformationPhone.filter(AnnotatedString(textPhone.value)).text.text
+  ```

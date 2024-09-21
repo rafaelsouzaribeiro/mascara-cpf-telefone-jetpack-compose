@@ -19,8 +19,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -48,8 +48,8 @@ class MainActivity : ComponentActivity() {
 fun MaskPhoneCPFScreen(modifier: Modifier = Modifier) {
     val visualTransformationPhone: VisualTransformation = remember { MaskPhone() }
     val visualTransformationCpf: VisualTransformation = remember { MaskCpf() }
-    val textPhone = remember { mutableStateOf(TextFieldValue("")) }
-    val textCpf = remember { mutableStateOf(TextFieldValue("")) }
+    val textPhone = remember { mutableStateOf("") }
+    val textCpf = remember { mutableStateOf("") }
     val mod=modifier.fillMaxWidth().padding(16.dp)
 
     Column(
@@ -96,14 +96,18 @@ fun MaskPhoneCPFScreen(modifier: Modifier = Modifier) {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             modifier = Modifier.fillMaxWidth()
         )
+        val transformedCpf =
+            visualTransformationCpf.filter(AnnotatedString(textCpf.value)).text.text
+        val transformedPhone =
+            visualTransformationPhone.filter(AnnotatedString(textPhone.value)).text.text
+
+        Text(text = "CPF: $transformedCpf",modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 16.dp))
+        Text(text = "TELEFONE: $transformedPhone")
     }
+
+
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MaskTheme {
-        MaskPhoneCPFScreen()
-    }
-}
