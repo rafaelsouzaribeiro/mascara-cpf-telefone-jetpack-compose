@@ -9,6 +9,7 @@
 
  ```
  <h1>Depois é só inserir no TextField:</h1>
+ 
  ```kotlin
  visualTransformation = visualTransformationPhone,
  visualTransformation = visualTransformationCpf
